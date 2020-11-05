@@ -1,0 +1,30 @@
+.title {
+  background: #374eae;
+  color: white;
+  padding: 1%;
+  text-align: center;
+  font-weight: 500;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: row;
+}
+
+.simple-card {
+  width: 25%;
+  margin: 1%;
+}
+.input-add {
+  display: flex;
+  justify-content: space-between;
+}
+.input-add button {
+  height: 50%;
+  margin: 10px;
+  background: #374eae;
+}
+.title-card {
+  display: flex;
+  justify-content: space-between;
+}
