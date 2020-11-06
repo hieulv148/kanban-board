@@ -4,17 +4,21 @@
     <mat-card>
       <div class="title-card">
         <mat-card-title>TODO(3)</mat-card-title>
-        <mat-icon style="color:#f99e98">delete</mat-icon>
+        <button mat-icon-button><mat-icon style="color: #f99e98">delete</mat-icon></button>
       </div>
-      <mat-list>
-        <mat-list-item> Learn Angular Material </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> Code Kanban Board App </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> Code Final Project </mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-list>
-      <div  class="input-add">
+      <div
+        cdkDropList
+        #todoList="cdkDropList"
+        [cdkDropListData]="todo"
+        [cdkDropListConnectedTo]="[doingList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="example-box" *ngFor="let item of todo" cdkDrag>
+          {{ item }}
+        </div>
+      </div>
+      <div class="input-add">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="New Job" />
         </mat-form-field>
@@ -22,19 +26,25 @@
         <button mat-raised-button color="primary">Add</button>
       </div>
     </mat-card>
-
   </div>
   <div class="simple-card">
     <mat-card>
       <div class="title-card">
         <mat-card-title>DOING(1)</mat-card-title>
-        <mat-icon style="color:#f99e98">delete</mat-icon>
+        <button mat-icon-button><mat-icon style="color: #f99e98">delete</mat-icon></button>
       </div>
-
-      <mat-list>
-        <mat-list-item> Learn Angular </mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-list>
+      <div
+        cdkDropList
+        #doingList="cdkDropList"
+        [cdkDropListData]="doing"
+        [cdkDropListConnectedTo]="[doneList,todoList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="example-box" *ngFor="let item of doing" cdkDrag>
+          {{ item }}
+        </div>
+      </div>
       <div class="input-add">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="New Job" />
@@ -48,26 +58,22 @@
     <mat-card>
       <div class="title-card">
         <mat-card-title>DONE(7)</mat-card-title>
-        <mat-icon style="color:#f99e98">delete</mat-icon>
+        <button mat-icon-button><mat-icon style="color: #f99e98">delete</mat-icon></button>
       </div>
 
-      <mat-list>
-        <mat-list-item> Learn HTML basic </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> Learn CSS basic </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> Learn javascript basic </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> Code Example </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> Learn Javacript DOM </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> Code Example App </mat-list-item>
-        <mat-divider></mat-divider>
-        <mat-list-item> Learn Responsive Web </mat-list-item>
-        <mat-divider></mat-divider>
-      </mat-list>
-      <div  class="input-add">
+      <div
+        cdkDropList
+        #doneList="cdkDropList"
+        [cdkDropListData]="done"
+        [cdkDropListConnectedTo]="[doingList]"
+        class="example-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="example-box" *ngFor="let item of done" cdkDrag>
+          {{ item }}
+        </div>
+      </div>
+      <div class="input-add">
         <mat-form-field class="example-full-width">
           <input matInput placeholder="New Job" />
         </mat-form-field>
@@ -77,8 +83,15 @@
     </mat-card>
   </div>
   <div class="simple-card">
-    <button mat-raised-button color="primary" style="background-color:#374eae ;">
-      <mat-icon>add</mat-icon> Add
-    </button>
+    <div class="input-add">
+      <mat-form-field class="example-full-width">
+        <input matInput placeholder="New List" />
+      </mat-form-field>
+
+      <button mat-raised-button color="primary" style="background-color: #374eae">
+        <mat-icon>add</mat-icon> Add
+      </button>
+    </div>
+
   </div>
 </section>
