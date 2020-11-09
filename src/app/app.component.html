@@ -19,7 +19,7 @@
         </div>
         <div class="input-add">
           <mat-form-field class="example-full-width">
-            <input #itemAdd matInput  placeholder="New Job" />
+            <input #itemAdd matInput  placeholder="New Job" (keydown.enter)="addJob(itemAdd,item.name)" />
           </mat-form-field>
 
           <button mat-raised-button color="primary" (click)="addJob(itemAdd,item.name)">Add</button>
@@ -30,7 +30,7 @@
   <div class="simple-card">
     <div class="input-add">
       <mat-form-field class="example-full-width">
-        <input #inputColumn matInput placeholder="New List" />
+        <input #inputColumn matInput placeholder="New List" (keydown.enter)="addColumn(inputColumn)" />
       </mat-form-field>
 
       <button (click)="addColumn(inputColumn)"  mat-raised-button color="primary" style="background-color: #374eae">
