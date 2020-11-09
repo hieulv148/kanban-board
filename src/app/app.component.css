@@ -1,3 +1,4 @@
+
 .title {
   background: #374eae;
   color: white;
@@ -9,6 +10,7 @@
 .task-list {
   display: flex;
   flex-direction: row;
+  overflow-x: scroll;
 }
 
 .simple-card {
